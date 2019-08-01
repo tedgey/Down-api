@@ -21,11 +21,31 @@ class Posts {
     }
   }
 
+  //select all groups for testing purposes
+  static async getAllGroups() {
+    try {
+      const response = await db.any(`select group_name from groups`);
+      return response;
+    } catch (err) {
+      return err.message;
+    }
+  }
+
+  //select username
+  static async getUserName() {
+    try {
+      const response = await db.one(`select * from users where user_id = 2;`);
+      return response;
+    } catch (err) {
+      return err.message;
+    }
+  }
+
   //select a specific group text
-  static async getById(group_id) {
+  static async getById(/* group_name*/) {
     try {
       const response = await db.any(
-        `select texts from messages where group_id = 1`
+        `select group_name from groups where user_id = 1`
       );
       return response;
     } catch (err) {

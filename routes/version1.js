@@ -8,11 +8,23 @@ router.get("/", (req, res, next) => {
   res.send("Welcome to my API").status(200);
 });
 
-// Get all groups that the user is in
+// Get username
 
+router.get("/the/:user_id", async (req, res, next) => {
+  const allPosts = await PostModel.getUserName();
+  res.json(allPosts).status(200);
+});
+
+// Get all groups that the user is in- populate feed
 router.get("/all/:user_id", async (req, res, next) => {
   const allPosts = await PostModel.getUserGroups();
   res.json(allPosts).status(200);
+});
+
+// Get all groups created- populate feed
+router.get("/groups", async (req, res, next) => {
+  const allGroups = await PostModel.getAllGroups();
+  res.json(allGroups).status(200);
 });
 
 // get a specific group text by its ID
