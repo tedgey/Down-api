@@ -45,7 +45,7 @@ class Posts {
   static async getById(/* group_name*/) {
     try {
       const response = await db.any(
-        `select group_name from groups where user_id = 1`
+        `select * from messages where group_id = 1`
       );
       return response;
     } catch (err) {

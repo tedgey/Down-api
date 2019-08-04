@@ -28,7 +28,7 @@ router.get("/groups", async (req, res, next) => {
 });
 
 // get a specific group text by its ID
-router.get("/post/:post_id?", async (req, res, next) => {
+router.get("/messages", async (req, res, next) => {
   const postId = req.params.post_id;
   const thePost = await PostModel.getById(postId);
   res.json(thePost).status(200);
